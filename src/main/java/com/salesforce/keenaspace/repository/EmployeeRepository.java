@@ -12,4 +12,7 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     List<Employee> findAllByManager_Id(int managerId);
 
     Employee findByEmail(String email);
+
+    Employee findByEmpId(int empId);
+
 }
