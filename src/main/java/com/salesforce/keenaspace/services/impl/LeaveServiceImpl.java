@@ -2,7 +2,6 @@ package com.salesforce.keenaspace.services.impl;
 
 import com.salesforce.keenaspace.VOs.LeaveVO;
 import com.salesforce.keenaspace.entity.Leave;
-import com.salesforce.keenaspace.entity.Seat;
 import com.salesforce.keenaspace.entity.SeatReservation;
 import com.salesforce.keenaspace.repository.EmployeeRepository;
 import com.salesforce.keenaspace.repository.LeaveRepository;
@@ -40,7 +39,7 @@ public class LeaveServiceImpl implements LeaveService {
 
         Date startDate = leaveDetails.getStartDate();
         Date endDate = leaveDetails.getEndDate();
-        while(startDate.compareTo(endDate)>=0)
+        while (endDate.compareTo(startDate) >= 0)
         {
            List employeeIdsOnLeave = leaveRepository.getDistinctTeamLeaves(employeeRepository.findById(leaveDetails.getEmpId()).getManager().getId(),startDate);
            double totalEmployees = employeeRepository.findAllByManager_Id(employeeRepository.findById(leaveDetails.getEmpId()).getManager().getId()).size();
@@ -57,9 +56,9 @@ public class LeaveServiceImpl implements LeaveService {
               }
               else if(noOfSeatsToBeMadeAvailable>1) {
                 List<String> reservedSeats = seatReservationRepository.reservedSeatIds(availableSeatIds);
-                reservedSeats.removeAll(availableSeatIds);
+                  availableSeatIds.removeAll(reservedSeats);
                   SeatReservation seatReservation = new SeatReservation();
-                  seatReservation.setSeat(seatRepository.findSeatById(reservedSeats.get(0)));
+                  seatReservation.setSeat(seatRepository.findSeatById(availableSeatIds.get(0)));
                   seatReservation.setDateAvailable(KeenaUtility.getDateWithoutTime(startDate));
                   seatReservationRepository.save(seatReservation);
               }
