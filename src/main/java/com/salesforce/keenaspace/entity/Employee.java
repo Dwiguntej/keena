@@ -1,4 +1,4 @@
-package com.salesforce.keenaspace.repository;
+package com.salesforce.keenaspace.entity;
 
 import javax.persistence.*;
 
