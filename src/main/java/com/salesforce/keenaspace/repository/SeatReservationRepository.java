@@ -15,4 +15,6 @@ public interface SeatReservationRepository extends CrudRepository<SeatReservatio
     SeatReservation findBySeat_IdAnAndDateAvailable(String seatId, Date date);
 
     SeatReservation findSeatReservationByIdEquals(int empId);
+
+    SeatReservation findBySeat_IdAndReservedFor_Id(String seatId, int empId);
 }
