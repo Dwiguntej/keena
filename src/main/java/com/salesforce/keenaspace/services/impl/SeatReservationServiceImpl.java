@@ -2,7 +2,6 @@ package com.salesforce.keenaspace.services.impl;
 
 import com.salesforce.keenaspace.entity.SeatReservation;
 import com.salesforce.keenaspace.repository.EmployeeRepository;
-import com.salesforce.keenaspace.repository.SeatRepository;
 import com.salesforce.keenaspace.repository.SeatReservationRepository;
 import com.salesforce.keenaspace.services.SeatReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +16,6 @@ public class SeatReservationServiceImpl implements SeatReservationService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
-
-    @Autowired
-    private SeatRepository seatRepository;
 
     @Autowired
     private SeatReservationRepository seatReservationRepository;
