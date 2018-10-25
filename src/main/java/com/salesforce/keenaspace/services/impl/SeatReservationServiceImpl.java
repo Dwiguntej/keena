@@ -28,4 +28,11 @@ public class SeatReservationServiceImpl implements SeatReservationService {
   public List<SeatReservation> findAllAvailableSeats(String location, String floor) {
     return seatReservationRepository.findAllByDateAvailableEqualsAndSeat_LocationEqualsAndSeat_FloorAndReservedForIsNull(new Date(), location, floor);
   }
+
+  @Override
+  public SeatReservation getReservedSeat(int empid) {
+    return seatReservationRepository.findSeatReservationByIdEquals(empid);
+  }
+
+
 }

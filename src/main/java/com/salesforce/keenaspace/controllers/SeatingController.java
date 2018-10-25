@@ -1,6 +1,7 @@
 package com.salesforce.keenaspace.controllers;
 
 import com.salesforce.keenaspace.entity.Seat;
+import com.salesforce.keenaspace.entity.SeatReservation;
 import com.salesforce.keenaspace.services.SeatReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +41,12 @@ public class SeatingController {
     @RequestMapping(value = "/unReserveSeat",method = RequestMethod.PUT)
     public boolean unReserveSeat(@RequestParam(value="empId") int empId, @RequestParam(value="seatId") String seatId) {
         return seatReservationService.unReserveSeat(empId,seatId);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/reservedSeat", method = RequestMethod.GET)
+    public SeatReservation getResevedSeat(@RequestParam(value = "empId") int empId) {
+        return seatReservationService.getReservedSeat(empId);
     }
 
 }

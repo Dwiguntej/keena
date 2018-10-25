@@ -13,4 +13,6 @@ public interface SeatReservationService {
    boolean unReserveSeat(int empId, String seatId);
 
     List<SeatReservation> findAllAvailableSeats(String location, String floor);
+
+    SeatReservation getReservedSeat(int empid);
 }
