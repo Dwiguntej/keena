@@ -17,4 +17,9 @@ public class SeatReservationServiceImpl implements SeatReservationService {
     public boolean reserveSeat(int empId, String seatId){
         return true;
     }
+
+    @Override
+    public boolean unReserveSeat(int empId, String seatId){
+        return true;
+    }
 }
