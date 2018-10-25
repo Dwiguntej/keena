@@ -1,5 +1,6 @@
 package com.salesforce.keenaspace.controllers;
 
+import com.salesforce.keenaspace.VOs.LeaveVO;
 import com.salesforce.keenaspace.entity.Leave;
 import com.salesforce.keenaspace.entity.Seat;
 import com.salesforce.keenaspace.services.LeaveService;
@@ -27,7 +28,7 @@ public class LeaveController {
 
     @ResponseBody
     @PostMapping("/applyLeave")
-    public ResponseEntity< String > applyLeave(@RequestBody Leave leaveDetails){
+    public ResponseEntity< String > applyLeave(@RequestBody LeaveVO leaveDetails){
         Leave leave = leaveService.applyLeave(leaveDetails);
         if(!ObjectUtils.isEmpty(leave)) {
             return ResponseEntity.status(HttpStatus.CREATED).build();
