@@ -9,6 +9,7 @@ import com.salesforce.keenaspace.repository.LeaveRepository;
 import com.salesforce.keenaspace.repository.SeatRepository;
 import com.salesforce.keenaspace.repository.SeatReservationRepository;
 import com.salesforce.keenaspace.services.LeaveService;
+import com.salesforce.keenaspace.util.KeenaUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +34,8 @@ public class LeaveServiceImpl implements LeaveService {
         Leave leave = new Leave();
         leave.setEmployeeOnLeave(employeeRepository.findById(leaveDetails.getEmpId()));
         leave.setAppliedBy(employeeRepository.findById(leaveDetails.getAppliedBy()));
-        leave.setStartDate(leaveDetails.getStartDate());
-        leave.setEndDate(leaveDetails.getEndDate());
+        leave.setStartDate(KeenaUtility.getDateWithoutTime(leaveDetails.getStartDate()));
+        leave.setEndDate(KeenaUtility.getDateWithoutTime(leaveDetails.getEndDate()));
         leave = leaveRepository.save(leave);
 
         Date startDate = leaveDetails.getStartDate();
@@ -51,7 +52,7 @@ public class LeaveServiceImpl implements LeaveService {
               if(noOfSeatsToBeMadeAvailable==1){
                   SeatReservation seatReservation = new SeatReservation();
                   seatReservation.setSeat(seatRepository.findSeatById(availableSeatIds.get(0)));
-                  seatReservation.setDateAvailable(startDate);
+                  seatReservation.setDateAvailable(KeenaUtility.getDateWithoutTime(startDate));
                   seatReservationRepository.save(seatReservation);
               }
               else if(noOfSeatsToBeMadeAvailable>1) {
@@ -59,7 +60,7 @@ public class LeaveServiceImpl implements LeaveService {
                 reservedSeats.removeAll(availableSeatIds);
                   SeatReservation seatReservation = new SeatReservation();
                   seatReservation.setSeat(seatRepository.findSeatById(reservedSeats.get(0)));
-                  seatReservation.setDateAvailable(startDate);
+                  seatReservation.setDateAvailable(KeenaUtility.getDateWithoutTime(startDate));
                   seatReservationRepository.save(seatReservation);
               }
           }
