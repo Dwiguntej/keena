@@ -1,0 +1,27 @@
+.ui-table-columntoggle-btn {
+    display: none !important;
+}
+
+.container {
+    height: 100vh;
+    background-image: url("images/background-image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
+.ui-table th, .ui-table td {
+    vertical-align: middle;
+}
+
+.ui-navbar ul {
+    padding: 4%;
+}
+
+.tabDivSpace {
+    height: 72vh;
+}

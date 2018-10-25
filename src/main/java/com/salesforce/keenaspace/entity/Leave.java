@@ -13,8 +13,11 @@ public class Leave {
   @JoinColumn(name = "EMPLOYEE_ON_LEAVE")
   private Employee employeeOnLeave;
 
-  @Column(name = "DATE_OF_LEAVE")
-  private Date dateOfLeave;
+  @Column(name = "START_DATE")
+  private Date startDate;
+
+  @Column(name = "END_DATE")
+  private Date endDate;
 
   @OneToOne
   @JoinColumn(name = "APPPLIED_BY")
@@ -36,16 +39,25 @@ public class Leave {
     this.employeeOnLeave = employeeOnLeave;
   }
 
-  public Date getDateOfLeave() {
-    return dateOfLeave;
-  }
-
-  public void setDateOfLeave(Date dateOfLeave) {
-    this.dateOfLeave = dateOfLeave;
-  }
 
   public Employee getAppliedBy() {
     return appliedBy;
+  }
+
+  public Date getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
+
+  public Date getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
   }
 
   public void setAppliedBy(Employee appliedBy) {
