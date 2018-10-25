@@ -12,4 +12,9 @@ public class SeatReservationServiceImpl implements SeatReservationService {
     public List<Seat> findAllAvailableSeats() {
         return null;
     }
+
+    @Override
+    public boolean reserveSeat(int empId, String seatId){
+        return true;
+    }
 }
