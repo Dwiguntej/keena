@@ -16,9 +16,9 @@ public class Employee {
   @Column(name = "LAST_NAME")
   private String lastname;
 
-  /*@JoinColumn(name = "MANAGER_ID")
+  @JoinColumn(name = "MANAGER_ID")
   @OneToOne(fetch = FetchType.LAZY)
-  private Employee manager;*/
+  private Employee manager;
 
   @Column(name = "EMAIL")
   private String email;
@@ -45,6 +45,14 @@ public class Employee {
 
   public void setLastname(String lastname) {
     this.lastname = lastname;
+  }
+
+  public Employee getManager() {
+    return manager;
+  }
+
+  public void setManager(Employee manager) {
+    this.manager = manager;
   }
 
   public String getEmail() {
