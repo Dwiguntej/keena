@@ -28,11 +28,11 @@ public class SeatReservationServiceImpl implements SeatReservationService {
 
     @Override
     public boolean reserveSeat(int empId, String seatId) {
-        SeatReservation seatReservation = seatReservationRepository.findBySeat_IdAnAndDateAvailable(seatId, new Date());
+        SeatReservation seatReservation = seatReservationRepository.findBySeat_IdAndDateAvailable(seatId, new Date());
         if (seatReservation.getReservedFor() != null) {
             throw new DataIntegrityViolationException("This Seat booking is in progress, please choose some other Seat ");
         }
-        seatReservation.setReservedFor(employeeRepository.findByEmpId(empId));
+        seatReservation.setReservedFor(employeeRepository.findById(empId));
         seatReservationRepository.save(seatReservation);
         return true;
 //        SeatReservation sr = new SeatReservation();

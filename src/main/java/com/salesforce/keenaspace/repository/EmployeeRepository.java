@@ -13,6 +13,6 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
     Employee findByEmail(String email);
 
-    Employee findByEmpId(int empId);
+    Employee findById(int empId);
 
 }

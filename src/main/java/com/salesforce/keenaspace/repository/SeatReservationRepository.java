@@ -12,7 +12,7 @@ public interface SeatReservationRepository extends CrudRepository<SeatReservatio
 
     List<SeatReservation> findAllByDateAvailableEqualsAndSeat_LocationEqualsAndSeat_FloorAndReservedForIsNull(Date dataAvailable, String location, String floor);
 
-    SeatReservation findBySeat_IdAnAndDateAvailable(String seatId, Date date);
+    SeatReservation findBySeat_IdAndDateAvailable(String seatId, Date date);
 
     SeatReservation findSeatReservationByIdEquals(int empId);
 
