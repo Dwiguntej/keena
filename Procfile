@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar keenaspace-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -jar keena-space/target/keenaspace-0.0.1-SNAPSHOT.jar
