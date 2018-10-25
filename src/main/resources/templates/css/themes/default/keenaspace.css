@@ -21,3 +21,7 @@ html, body {
 .ui-navbar ul {
     padding: 4%;
 }
+
+.tabDivSpace {
+    height: 72vh;
+}
