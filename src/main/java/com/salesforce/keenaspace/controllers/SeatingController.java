@@ -27,7 +27,7 @@ public class SeatingController {
     @ResponseBody
     @GetMapping("/availableSeats")
     public List<Seat>getListofSeats(){
-        return seatReservationService.findAllAvailableSeats();
+        return null;
     }
 
     @ResponseBody
