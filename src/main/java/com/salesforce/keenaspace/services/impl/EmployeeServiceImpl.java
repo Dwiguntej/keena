@@ -6,6 +6,8 @@ import com.salesforce.keenaspace.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -15,5 +17,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findByEmail(String email) {
         return employeeRepository.findByEmail(email);
 
+    }
+
+    @Override
+    public List<Employee> findAllByManagerId(int managerId) {
+        return employeeRepository.findAllByManager_Id(managerId);
     }
 }
