@@ -11,4 +11,6 @@ import java.util.List;
 public interface SeatReservationRepository extends CrudRepository<SeatReservation, Integer> {
 
     List<SeatReservation> findAllByDateAvailableEqualsAndSeat_LocationEqualsAndSeat_FloorAndReservedForIsNull(Date dataAvailable, String location, String floor);
+
+    SeatReservation findBySeat_IdAnAndDateAvailable(String seatId, Date date);
 }
