@@ -1,1 +1,1 @@
-web
+web: java com.salesforce.keenaspace.KeenaspaceApplication -Dserver.port=$PORT
