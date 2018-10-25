@@ -18,8 +18,8 @@ public class LeaveServiceImpl implements LeaveService {
     @Override
     public Leave applyLeave(LeaveVO leaveDetails) {
         Leave leave = new Leave();
-        leave.setEmployeeOnLeave(employeeRepository.findByEmpId(leaveDetails.getEmpId()));
-        leave.setAppliedBy(employeeRepository.findByEmpId(leaveDetails.getAppliedBy()));
+        leave.setEmployeeOnLeave(employeeRepository.findById(leaveDetails.getEmpId()));
+        leave.setAppliedBy(employeeRepository.findById(leaveDetails.getAppliedBy()));
         leave.setStartDate(leaveDetails.getStartDate());
         leave.setEndDate(leaveDetails.getEndDate());
        return leaveRepository.save(leave);
