@@ -27,12 +27,19 @@ public class SeatingController {
     @ResponseBody
     @GetMapping("/availableSeats")
     public List<Seat>getListofSeats(){
-        return seatReservationService.findAllAvailableSeats();
+        return null;
     }
 
     @ResponseBody
-    @GetMapping("/reserveSeat")
+    @RequestMapping(value = "/reserveSeat",method = RequestMethod.POST)
     public boolean reserveSeat(@RequestParam(value="empId") int empId, @RequestParam(value="seatId") String seatId) {
         return seatReservationService.reserveSeat(empId,seatId);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/unReserveSeat",method = RequestMethod.PUT)
+    public boolean unReserveSeat(@RequestParam(value="empId") int empId, @RequestParam(value="seatId") String seatId) {
+        return seatReservationService.unReserveSeat(empId,seatId);
+    }
+
 }
