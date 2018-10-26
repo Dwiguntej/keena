@@ -1,6 +1,15 @@
 var urls = {
-    availableSeatsLocation: "http://localhost:5000/"
+    availableSeatsLocation: "http://localhost:5000/",
+    serverLocation: "http://localhost:5000/"
 };
+
+var userDetails = null;
+
+
+$(document).ready(function () {
+    getEmployeeDetails();
+
+});
 
 var getAvailableSeats = function () {
     var index = 0;
@@ -57,7 +66,39 @@ var reserveSeat = function (seatId, empId, index) {
 
 }
 
-$(document).ready(function () {
-    getAvailableSeats();
+var getEmployeeDetails = function () {
+    $.ajax({
+        url: urls.serverLocation + "getEmployeeDetails",
+        method: "GET",
+        success: function (data) {
 
-});
+            console.log(data);
+
+            getAvailableSeats();
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+};
+
+var getTeamMembers = function () {
+    $.ajax({
+        url: urls.serverLocation + "getTeamMembers?managerId=" + userDetails.managerId,
+        method: "GET",
+        success: function (data) {
+            var divBody = "";
+            data.forEach(function (element) {
+                divBody = divBody + "<div class=\"ui-radio ui-mini\">"
+                divBody = divBody + "<input type= \"radio\" name=\"radio-choice-v-" + element.id + "\" id=\"team-member-" + element.id + "\" value=\"" + element.id + "\">";
+                divBody = divBody + "<label for=\"team-member-" + element.id + "\" class=\"ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off ui-last-child\">" + element.firstname + " " + element.lastname + "</label>";
+                divBody = divBody + "</input>";
+                divBody = divBody + "</div>";
+            });
+            $("#team-member").append(divBody);
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+};
