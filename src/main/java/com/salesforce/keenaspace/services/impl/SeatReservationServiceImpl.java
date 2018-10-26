@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -24,19 +25,25 @@ public class SeatReservationServiceImpl implements SeatReservationService {
 
     @Override
     public List<SeatReservation> findAllAvailableSeats(String location, String floor) {
-        return seatReservationRepository.findAllByDateAvailableEqualsAndSeat_LocationEqualsAndSeat_FloorAndReservedForIsNull(KeenaUtility.getDateWithoutTime(new Date()), location, floor);
+        return seatReservationRepository.findAllByDateAvailableEqualsAndSeat_LocationEqualsAndSeat_FloorAndReservedForIsNull(KeenaUtility.getDateWithoutTime(KeenaUtility.getDateInUTCTimezone(new Date())), location, floor);
     }
 
     @Override
     public boolean reserveSeat(int empId, String seatId) {
-        SeatReservation seatReservation = seatReservationRepository.findBySeat_IdAndDateAvailable(seatId, KeenaUtility.getDateWithoutTime(new Date()));
-        if (seatReservation != null && seatReservation.getReservedFor() != null) {
-            throw new DataIntegrityViolationException("This Seat booking is in progress, please choose some other Seat ");
-        }
-        if (seatReservation != null) {
-            seatReservation.setReservedFor(employeeRepository.findById(empId));
-            seatReservationRepository.save(seatReservation);
-            return true;
+        SimpleDateFormat estFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            SeatReservation seatReservation = seatReservationRepository.findBySeat_IdAndDateAvailable(seatId, KeenaUtility.getDateInUTCTimezone(estFormatter.parse(estFormatter.format(new Date()))));
+
+            if (seatReservation != null && seatReservation.getReservedFor() != null) {
+                throw new DataIntegrityViolationException("This Seat booking is in progress, please choose some other Seat ");
+            }
+            if (seatReservation != null) {
+                seatReservation.setReservedFor(employeeRepository.findById(empId));
+                seatReservationRepository.save(seatReservation);
+                return true;
+            }
+        } catch (Exception ex) {
+
         }
         return false;
 //        SeatReservation sr = new SeatReservation();

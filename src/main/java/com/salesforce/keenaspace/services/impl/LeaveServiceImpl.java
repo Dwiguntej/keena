@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class LeaveServiceImpl implements LeaveService {
     @Autowired
-   private LeaveRepository leaveRepository;
+    private LeaveRepository leaveRepository;
     @Autowired
     private EmployeeRepository employeeRepository;
     @Autowired
@@ -33,8 +33,8 @@ public class LeaveServiceImpl implements LeaveService {
         Leave leave = new Leave();
         leave.setEmployeeOnLeave(employeeRepository.findById(leaveDetails.getEmpId()));
         leave.setAppliedBy(employeeRepository.findById(leaveDetails.getAppliedBy()));
-        leave.setStartDate(KeenaUtility.getDateWithoutTime(leaveDetails.getStartDate()));
-        leave.setEndDate(KeenaUtility.getDateWithoutTime(leaveDetails.getEndDate()));
+        leave.setStartDate(KeenaUtility.getDateInUTCTimezone(leaveDetails.getStartDate()));
+        leave.setEndDate(KeenaUtility.getDateInUTCTimezone(leaveDetails.getEndDate()));
         leave = leaveRepository.save(leave);
 
         Date startDate = leaveDetails.getStartDate();
@@ -51,7 +51,7 @@ public class LeaveServiceImpl implements LeaveService {
               if(noOfSeatsToBeMadeAvailable==1){
                   SeatReservation seatReservation = new SeatReservation();
                   seatReservation.setSeat(seatRepository.findSeatById(availableSeatIds.get(0)));
-                  seatReservation.setDateAvailable(KeenaUtility.getDateWithoutTime(startDate));
+                  seatReservation.setDateAvailable(KeenaUtility.getDateInUTCTimezone(startDate));
                   seatReservationRepository.save(seatReservation);
               }
               else if(noOfSeatsToBeMadeAvailable>1) {
@@ -59,7 +59,7 @@ public class LeaveServiceImpl implements LeaveService {
                   availableSeatIds.removeAll(reservedSeats);
                   SeatReservation seatReservation = new SeatReservation();
                   seatReservation.setSeat(seatRepository.findSeatById(availableSeatIds.get(0)));
-                  seatReservation.setDateAvailable(KeenaUtility.getDateWithoutTime(startDate));
+                  seatReservation.setDateAvailable(KeenaUtility.getDateInUTCTimezone(startDate));
                   seatReservationRepository.save(seatReservation);
               }
           }

@@ -1,44 +1,68 @@
 package com.salesforce.keenaspace.entity;
 
-import com.salesforce.keenaspace.entity.Employee;
-
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "LEAVE")
 public class Leave {
-    private Employee employeeOnLeave;
-    private Employee appliedBy;
-    private Date startDate;
-    private Date endDate;
 
-    public void setEmployeeOnLeave(Employee employeeOnLeave) {
-        this.employeeOnLeave = employeeOnLeave;
-    }
+  @Id
+  @GeneratedValue
+  private int id;
 
-    public Employee getEmployeeOnLeave() {
-        return employeeOnLeave;
-    }
+  @OneToOne
+  @JoinColumn(name = "EMPLOYEE_ON_LEAVE")
+  private Employee employeeOnLeave;
 
-    public void setAppliedBy(Employee appliedBy) {
-        this.appliedBy = appliedBy;
-    }
+  @Column(name = "START_DATE")
+  private Date startDate;
 
-    public Employee getAppliedBy() {
-        return appliedBy;
-    }
+  @Column(name = "END_DATE")
+  private Date endDate;
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
+  @OneToOne
+  @JoinColumn(name = "APPPLIED_BY")
+  private Employee appliedBy;
 
-    public Date getStartDate() {
-        return startDate;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public Date getEndDate() {
-        return endDate;
-    }
+  public Employee getEmployeeOnLeave() {
+    return employeeOnLeave;
+  }
+
+  public void setEmployeeOnLeave(Employee employeeOnLeave) {
+    this.employeeOnLeave = employeeOnLeave;
+  }
+
+
+  public Employee getAppliedBy() {
+    return appliedBy;
+  }
+
+  public Date getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
+
+  public Date getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
+  }
+
+  public void setAppliedBy(Employee appliedBy) {
+    this.appliedBy = appliedBy;
+  }
 }
