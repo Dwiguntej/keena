@@ -16,7 +16,8 @@
         <div data-role="navbar">
             <ul>
                 <li><a href="#dashboard" data-ajax="false" class="ui-btn-active">Dashboard</a></li>
-                <li><a href="#availability" data-ajax="false">Apply Leave</a></li>
+                <li><a href="#availability" data-ajax="false" onclick="changeAvailability('sneema@salesforce.com')">Apply
+                    Leave</a></li>
             </ul>
         </div>
         <div id="dashboard" class="ui-body-d ui-content tabDivSpace">
@@ -35,26 +36,33 @@
             </table>
         </div>
         <div id="availability" class="ui-body-d ui-content tabDivSpace">
-            <label class="inlineblock" for="flip-checkbox-3">Self</label>
+            <label class="inlineblock" for="flip-checkbox-3" style="margin-right: 15px;">Self</label>
             <input class="inlineblock" type="checkbox" data-role="flipswitch" name="flip-checkbox-3"
                    id="flip-checkbox-3" data-on-text="" data-off-text="" data-wrapper-class="custom-size-flipswitch">
-            <label class="inlineblock" for="flip-checkbox-3">Team Member</label>
+            <label class="inlineblock" for="flip-checkbox-3" style="margin-left: 15px;">Team Member</label>
 
-            <fieldset data-role="controlgroup" data-mini="true">
-                <legend>Vertical, icon right, mini sized:</legend>
-                <input type="radio" name="radio-choice-v-6" id="team-member-1" value="on" checked="checked">
-                <label for="team-member-1">Robo</label>
-                <input type="radio" name="radio-choice-v-6" id="team-member-2" value="off">
-                <label for="team-member-2">Subrat</label>
-                <input type="radio" name="radio-choice-v-6" id="team-member-3" value="other">
-                <label for="team-member-3">Athreya</label>
+            <fieldset data-role="controlgroup" data-mini="true" id="teamMembersList">
+                <legend>Team Members:</legend>
+                <div id="team-member"></div>
             </fieldset>
 
-            <label class="inlineblock">Select Date</label>
-            <input type="text" data-role="date" data-inline="true">
+            <label>Select Date</label>
+            <input type="text" data-role="date">
 
             <a href="#" class="ui-btn ui-btn-a">Mark Seat as Available</a>
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function () {
+        $("#teamMembersList").hide();
+        $('#flip-checkbox-3').on('change', function () {
+            if ($('#flip-checkbox-3').prop("checked")) {
+                $("#teamMembersList").show();
+            } else {
+                $("#teamMembersList").hide();
+            }
+        });
+    });
+</script>
 </html>
