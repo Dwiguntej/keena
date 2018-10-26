@@ -6,8 +6,9 @@ import java.util.Date;
 @Entity
 @Table(name = "LEAVE")
 public class Leave {
-
-  @Id @GeneratedValue private int id;
+  @Id
+  @GeneratedValue
+  private int id;
 
   @OneToOne
   @JoinColumn(name = "EMPLOYEE_ON_LEAVE")

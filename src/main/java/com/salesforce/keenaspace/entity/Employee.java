@@ -20,7 +20,7 @@ public class Employee {
   private String lastname;
 
   @JoinColumn(name = "MANAGER_ID")
-  @OneToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.EAGER)
   private Employee manager;
 
   @Column(name = "EMAIL")
