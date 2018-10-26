@@ -1,8 +1,11 @@
 package com.salesforce.keenaspace.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "EMPLOYEE")
 public class Employee {
 
