@@ -3,20 +3,15 @@ package com.salesforce.keenaspace.controllers;
 import com.salesforce.keenaspace.entity.Seat;
 import com.salesforce.keenaspace.entity.SeatReservation;
 import com.salesforce.keenaspace.services.SeatReservationService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class SeatingController {
-
-    Logger LOG = LoggerFactory.getLogger(SeatingController.class);
 
     @Autowired
     SeatReservationService seatReservationService;
@@ -28,10 +23,6 @@ public class SeatingController {
 
     @RequestMapping("/")
     public String getHello(HttpServletRequest request) {
-        Map<String, String[]> parameters = request.getParameterMap();
-        for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
-            LOG.error("Params: Key:" + entry.getKey() + "-----Params:values:" + entry.getValue());
-        }
         return "hello";
     }
 
