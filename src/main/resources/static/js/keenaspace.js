@@ -1,6 +1,15 @@
 var urls = {
-    availableSeatsLocation: "http://localhost:5000/"
+    availableSeatsLocation: "http://localhost:5000/",
+    serverLocation: "http://localhost:5000/"
 };
+
+var userDetails = null;
+
+
+$(document).ready(function () {
+    getEmployeeDetails();
+
+});
 
 var getAvailableSeats = function () {
     var index = 0;
@@ -39,23 +48,15 @@ var reserveSeat = function (seatId, empId) {
     });
 }
 
-$(document).ready(function () {
-    getAvailableSeats();
-
-});
-
-
-var changeAvailability = function (emailId) {
-    getEmployeeDetails(emailId);
-};
-var getEmployeeDetails = function (emailId) {
+var getEmployeeDetails = function () {
     $.ajax({
-        url: urls.availableSeatsLocation + "getEmployeeDetails?emailId=" + emailId,
+        url: urls.serverLocation + "getEmployeeDetails",
         method: "GET",
         success: function (data) {
 
             console.log(data);
-            getTeamMembers(data.manager.id)
+
+            getAvailableSeats();
         },
         error: function (e) {
             console.log(e);
@@ -63,9 +64,9 @@ var getEmployeeDetails = function (emailId) {
     });
 };
 
-var getTeamMembers = function (managerId) {
+var getTeamMembers = function () {
     $.ajax({
-        url: urls.availableSeatsLocation + "getTeamMembers?managerId=" + managerId,
+        url: urls.serverLocation + "getTeamMembers?managerId=" + userDetails.managerId,
         method: "GET",
         success: function (data) {
             var divBody = "";
