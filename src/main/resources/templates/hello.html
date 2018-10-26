@@ -7,6 +7,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery.mobile-1.4.5.js"></script>
     <script src="js/keenaspace.js"></script>
+    <script src="js/datepicker.js"></script>
     <link rel="stylesheet" href="default/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" href="default/keenaspace.css">
 </head>
@@ -16,8 +17,8 @@
         <div data-role="navbar">
             <ul>
                 <li><a href="#dashboard" data-ajax="false" class="ui-btn-active">Dashboard</a></li>
-                <li><a href="#availability" data-ajax="false" onclick="getTeamMembers()">Apply
-                    Leave</a></li>
+                <li><a href="#availability" data-ajax="false" onclick="changeAvailability('sneema@salesforce.com')">Release
+                    Seat</a></li>
             </ul>
         </div>
         <div id="dashboard" class="ui-body-d ui-content tabDivSpace">
@@ -46,8 +47,14 @@
                 <div id="team-member"></div>
             </fieldset>
 
-            <label>Select Date</label>
-            <input type="text" data-role="date">
+            <div class="datePickerDivRegion">
+                <label class="inlineblock">From</label>
+                <input type="text" class="date-input-inline inlineblock" data-inline="true" data-role="date">
+            </div>
+            <div class="datePickerDivRegion">
+                <label class="inlineblock">To</label>
+                <input type="text" class="date-input-inline inlineblock" data-inline="true" data-role="date">
+            </div>
 
             <a href="#" class="ui-btn ui-btn-a">Mark Seat as Available</a>
         </div>
@@ -63,6 +70,9 @@
                 $("#teamMembersList").hide();
             }
         });
+    });
+    $(function () {
+        $(".date-input-inline").datepicker();
     });
 </script>
 </html>
