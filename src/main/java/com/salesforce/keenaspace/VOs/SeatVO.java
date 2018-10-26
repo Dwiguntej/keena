@@ -4,19 +4,19 @@ public class SeatVO {
 
     private String seatId;
     private String managerName;
-    private String employeeId;
+    private Integer employeeId;
 
-    public SeatVO(String seatId, String managerName,String employeeId) {
+    public SeatVO(String seatId, String managerName,Integer employeeId) {
         this.seatId = seatId;
         this.managerName = managerName;
         this.employeeId = employeeId;
     }
 
-    public String getEmployeeId() {
+    public Integer getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
 

@@ -18,6 +18,8 @@ public interface SeatReservationRepository extends CrudRepository<SeatReservatio
 
     SeatReservation findSeatReservationByIdEquals(int empId);
 
+    SeatReservation findSeatReservationByReservedFor_Id(int empId);
+
     SeatReservation findBySeat_IdAndReservedFor_Id(String seatId, int empId);
 
     @Query(nativeQuery = true, value = "select SEAT_ID from SEAT_RESERVATION where SEAT_ID in (:seatIds)")

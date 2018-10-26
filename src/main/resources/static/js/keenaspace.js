@@ -71,6 +71,8 @@ var reserveSeat = function (seatId, empId, index) {
                         document.getElementById(step).style.cursor = "pointer";
                     }
                 }
+                $('#dashboard').show('slow');
+                $('#booked-seat').hide('slow');
             },
             error: function (e) {
                 console.log(e);
@@ -89,6 +91,7 @@ var getEmployeeDetails = function () {
             console.log(data);
 
             getAvailableSeats();
+            getBookedSeatForMe();
         },
         error: function (e) {
             console.log(e);
@@ -116,3 +119,27 @@ var getTeamMembers = function () {
         }
     });
 };
+
+var getBookedSeatForMe = function () {
+    $.ajax({
+        url: urls.serverLocation + "reservedSeat?empId=" + userDetails.employeeId,
+        method: "GET",
+        success: function (data) {
+            var tableBody = "";
+                tableBody = tableBody + "<tr>";
+                tableBody = tableBody + "<td>" + data.seat.employee.firstname +" "+ data.seat.employee.lastname+ "</td>";
+                tableBody = tableBody + "<td>" + data.seat.id + "</td>";
+                tableBody = tableBody + "<td><a class=\"ui-btn ui-corner-all\" onclick=reserveSeat(\"" + data.seat.id + "\",\"" + userDetails.employeeId + "\")>Unreserve</a></td>";
+                tableBody = tableBody + "</tr>";
+            $("#table-booked-seat").append(tableBody);
+            if(data !=null){
+                $('#booked-seat').show('slow');
+            } else{
+                $('#dashboard').show('slow');
+            }
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+}

@@ -78,7 +78,7 @@ public class SeatReservationServiceImpl implements SeatReservationService {
 
     @Override
     public SeatReservation getReservedSeat(int empid) {
-        return seatReservationRepository.findSeatReservationByIdEquals(empid);
+        return seatReservationRepository.findSeatReservationByReservedFor_Id(empid);
     }
 
 
