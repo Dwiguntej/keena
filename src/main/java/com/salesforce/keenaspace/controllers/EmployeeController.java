@@ -20,7 +20,7 @@ public class EmployeeController {
 
   @RequestMapping(value = "/getEmployeeDetails", method = RequestMethod.GET)
   public EmployeeVO getKeenaEmployeeDetails() throws Exception {
-    String email = RestCaller.getUserEmail();
+    String email = "sneema@salesforce.com";
     Employee employee = employeeService.findByEmail(email);
     EmployeeVO employeeVO = new EmployeeVO();
     employeeVO.setEmployeeId(employee.getId());
