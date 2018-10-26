@@ -168,6 +168,8 @@ var makeSeatAvailable = function () {
         contentType: 'application/json',
         success: function (data) {
             $(".se-pre-con").hide('fast');
+            $($(".date-input-inline")[0]).val("");
+            $($(".date-input-inline")[1]).val("");
         },
         error: function (e) {
             $(".se-pre-con").hide('fast');
