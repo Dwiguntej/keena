@@ -252,3 +252,26 @@ html body .ui-datepicker .ui-state-active {
 .datePickerDivRegion div {
     display: inline-block !important;
 }
+
+.banner {
+    height: 37px;
+    padding-top: 13px;
+    padding-left: 19px;
+    background-image: url(images/banner.png);
+    background-repeat: no-repeat;
+}
+
+.navbar-brand {
+    padding: 0px;
+}
+.navbar-brand>img {
+    height: 100%;
+    padding: 15px;
+    width: auto;
+}
+
+.WelcomeMessage {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-left: 35px;
+}
