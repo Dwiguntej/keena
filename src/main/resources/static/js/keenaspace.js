@@ -89,6 +89,7 @@ var getEmployeeDetails = function () {
         success: function (data) {
             userDetails = data;
             console.log(data);
+            $("#welcome_message").html('Welcome ' + data.firstname + ' ' + data.lastname);
 
             getAvailableSeats();
             getBookedSeatForMe();
