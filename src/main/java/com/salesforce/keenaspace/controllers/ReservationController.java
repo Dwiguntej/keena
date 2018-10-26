@@ -1,5 +1,6 @@
 package com.salesforce.keenaspace.controllers;
 
+import com.salesforce.keenaspace.VOs.SeatVO;
 import com.salesforce.keenaspace.entity.SeatReservation;
 import com.salesforce.keenaspace.services.SeatReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class ReservationController {
     private SeatReservationService seatReservationService;
 
     @RequestMapping("/seats")
-    public List<SeatReservation> getAvailableSeats(@RequestParam("location") String location, @RequestParam("floor") String floor){
+    public List<SeatVO> getAvailableSeats(@RequestParam("location") String location, @RequestParam("floor") String floor){
         return seatReservationService.findAllAvailableSeats(location, floor);
     }
 }

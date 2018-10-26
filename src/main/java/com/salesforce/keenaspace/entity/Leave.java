@@ -6,7 +6,6 @@ import java.util.Date;
 @Entity
 @Table(name = "LEAVE")
 public class Leave {
-
   @Id
   @GeneratedValue
   private int id;
