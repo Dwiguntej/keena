@@ -20,7 +20,8 @@ public class SeatReservationDAO {
         List<SeatVO> result = new ArrayList<>(rows.size());
         for (Object[] row : rows) {
             result.add(new SeatVO((String) row[0],
-                    (String) row[1]));
+                    (String) row[1],
+                    (String) row[2]));
         }
         return result;
     }

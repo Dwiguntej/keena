@@ -4,10 +4,20 @@ public class SeatVO {
 
     private String seatId;
     private String managerName;
+    private String empId;
 
-    public SeatVO(String seatId, String managerName) {
+    public SeatVO(String seatId, String managerName,String empId) {
         this.seatId = seatId;
         this.managerName = managerName;
+        this.empId = empId;
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getSeatId() {
