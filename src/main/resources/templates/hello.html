@@ -74,9 +74,25 @@
             </table>
         </div>
         <div id="availability" class="ui-body-d ui-content tabDivSpace">
-            <label for="flip-checkbox-3">Flip toggle switch checkbox:</label>
-            <input type="checkbox" data-role="flipswitch" name="flip-checkbox-3" id="flip-checkbox-3"
-                   data-on-text="Self" data-off-text="Team Member" data-wrapper-class="custom-size-flipswitch">
+            <label class="inlineblock" for="flip-checkbox-3">Self</label>
+            <input class="inlineblock" type="checkbox" data-role="flipswitch" name="flip-checkbox-3"
+                   id="flip-checkbox-3" data-on-text="" data-off-text="" data-wrapper-class="custom-size-flipswitch">
+            <label class="inlineblock" for="flip-checkbox-3">Team Member</label>
+
+            <fieldset data-role="controlgroup" data-mini="true">
+                <legend>Vertical, icon right, mini sized:</legend>
+                <input type="radio" name="radio-choice-v-6" id="team-member-1" value="on" checked="checked">
+                <label for="team-member-1">Robo</label>
+                <input type="radio" name="radio-choice-v-6" id="team-member-2" value="off">
+                <label for="team-member-2">Subrat</label>
+                <input type="radio" name="radio-choice-v-6" id="team-member-3" value="other">
+                <label for="team-member-3">Athreya</label>
+            </fieldset>
+
+            <label class="inlineblock">Select Date</label>
+            <input type="text" data-role="date" data-inline="true">
+
+            <a href="#" class="ui-btn ui-btn-a">Mark Seat as Available</a>
         </div>
     </div>
 </body>

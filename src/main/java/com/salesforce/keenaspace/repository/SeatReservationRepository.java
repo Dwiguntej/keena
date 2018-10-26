@@ -1,7 +1,9 @@
 package com.salesforce.keenaspace.repository;
 
 import com.salesforce.keenaspace.entity.SeatReservation;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -17,4 +19,7 @@ public interface SeatReservationRepository extends CrudRepository<SeatReservatio
     SeatReservation findSeatReservationByIdEquals(int empId);
 
     SeatReservation findBySeat_IdAndReservedFor_Id(String seatId, int empId);
+
+    @Query(nativeQuery = true, value = "select SEAT_ID from SEAT_RESERVATION where SEAT_ID in (:seatIds)")
+    List<String> reservedSeatIds(@Param("seatIds") List<String> seatIds);
 }

@@ -4,6 +4,7 @@ import com.salesforce.keenaspace.entity.SeatReservation;
 import com.salesforce.keenaspace.repository.EmployeeRepository;
 import com.salesforce.keenaspace.repository.SeatReservationRepository;
 import com.salesforce.keenaspace.services.SeatReservationService;
+import com.salesforce.keenaspace.util.KeenaUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -23,18 +24,21 @@ public class SeatReservationServiceImpl implements SeatReservationService {
 
     @Override
     public List<SeatReservation> findAllAvailableSeats(String location, String floor) {
-        return seatReservationRepository.findAllByDateAvailableEqualsAndSeat_LocationEqualsAndSeat_FloorAndReservedForIsNull(new Date(), location, floor);
+        return seatReservationRepository.findAllByDateAvailableEqualsAndSeat_LocationEqualsAndSeat_FloorAndReservedForIsNull(KeenaUtility.getDateWithoutTime(new Date()), location, floor);
     }
 
     @Override
     public boolean reserveSeat(int empId, String seatId) {
-        SeatReservation seatReservation = seatReservationRepository.findBySeat_IdAndDateAvailable(seatId, new Date());
-        if (seatReservation.getReservedFor() != null) {
+        SeatReservation seatReservation = seatReservationRepository.findBySeat_IdAndDateAvailable(seatId, KeenaUtility.getDateWithoutTime(new Date()));
+        if (seatReservation != null && seatReservation.getReservedFor() != null) {
             throw new DataIntegrityViolationException("This Seat booking is in progress, please choose some other Seat ");
         }
-        seatReservation.setReservedFor(employeeRepository.findById(empId));
-        seatReservationRepository.save(seatReservation);
-        return true;
+        if (seatReservation != null) {
+            seatReservation.setReservedFor(employeeRepository.findById(empId));
+            seatReservationRepository.save(seatReservation);
+            return true;
+        }
+        return false;
 //        SeatReservation sr = new SeatReservation();
 //        sr.setSeat(seatRepository.findBySeatId(seatId));
 //        sr.setReservedFor(employeeRepository.findByEmpId(empId));
