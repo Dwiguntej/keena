@@ -22,7 +22,7 @@ var getAvailableSeats = function () {
                 tableBody = tableBody + "<tr>";
                 tableBody = tableBody + "<td>" + element.seatId + "</td>";
                 tableBody = tableBody + "<td>" + element.managerName + "</td>";
-                tableBody = tableBody + "<td><a id=\"" + index + "\" class=\"ui-btn ui-corner-all\" onclick=reserveSeat(\"" + element.seatId + "\",36,\"" + index + "\")>Reserve</a></td>";
+                tableBody = tableBody + "<td><a id=\"" + index + "\" class=\"ui-btn ui-corner-all\" onclick=reserveSeat(\"" + element.seatId + "\",userDetails.employeeId,\"" + index + "\")>Reserve</a></td>";
                 tableBody = tableBody + "</tr>";
                 index = index + 1;
             });

@@ -48,7 +48,7 @@ public class SeatReservationServiceImpl implements SeatReservationService {
                 return true;
             }
         } catch (Exception ex) {
-
+            ex.printStackTrace();
         }
         return false;
 //        SeatReservation sr = new SeatReservation();
@@ -65,10 +65,15 @@ public class SeatReservationServiceImpl implements SeatReservationService {
 
     @Override
     public boolean unReserveSeat(int empId, String seatId) {
-        SeatReservation seatReservation = seatReservationRepository.findBySeat_IdAndReservedFor_Id(seatId, empId);
-        seatReservation.setReservedFor(null);
-        seatReservationRepository.save(seatReservation);
-        return true;
+        try {
+            SeatReservation seatReservation = seatReservationRepository.findBySeat_IdAndReservedFor_Id(seatId, empId);
+            seatReservation.setReservedFor(null);
+            seatReservationRepository.save(seatReservation);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     @Override
