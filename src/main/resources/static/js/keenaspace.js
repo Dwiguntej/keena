@@ -102,6 +102,7 @@ var getEmployeeDetails = function () {
 };
 
 var getTeamMembers = function () {
+    $('#booked-seat').hide();
     $.ajax({
         url: urls.serverLocation + "getTeamMembers?managerId=" + userDetails.managerId,
         method: "GET",
@@ -148,3 +149,29 @@ var getBookedSeatForMe = function () {
         }
     });
 }
+
+var makeSeatAvailable = function () {
+    $(".se-pre-con").show('fast');
+    var leaveVO = {};
+    if ($("#toggle_switch").hasClass("ui-flipswitch-active")) {
+        leaveVO.empId = $(".ui-radio.ui-mini input.selected").attr("value");
+    } else {
+        leaveVO.empId = userDetails.employeeId;
+    }
+    leaveVO.appliedBy = userDetails.employeeId;
+    leaveVO.startDate = $($(".date-input-inline")[0]).val();
+    leaveVO.endDate = $($(".date-input-inline")[1]).val();
+    $.ajax({
+        url: urls.serverLocation + "applyLeave",
+        method: "POST",
+        data: JSON.stringify(leaveVO),
+        contentType: 'application/json',
+        success: function (data) {
+            $(".se-pre-con").hide('fast');
+        },
+        error: function (e) {
+            $(".se-pre-con").hide('fast');
+            console.log(e);
+        }
+    });
+};
