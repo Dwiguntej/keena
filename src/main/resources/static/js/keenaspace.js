@@ -8,6 +8,7 @@ var userDetails = {};
 
 $(document).ready(function () {
     getEmployeeDetails();
+    $(".se-pre-con").fadeOut("slow");
 
 });
 
@@ -38,6 +39,7 @@ var getAvailableSeats = function () {
 };
 
 var reserveSeat = function (seatId, empId, index) {
+    $(".se-pre-con").show();
     var rowCount = $("#table-custom-2").length + 1;
     if (index) {
         $.ajax({
@@ -49,10 +51,12 @@ var reserveSeat = function (seatId, empId, index) {
                 getAvailableSeats();
                 getBookedSeatForMe();
                 $('#booked-seat').show('slow');
+                $(".se-pre-con").hide();
 
             },
             error: function (e) {
                 console.log(e);
+                $(".se-pre-con").hide();
             }
         });
     }
@@ -68,9 +72,11 @@ var reserveSeat = function (seatId, empId, index) {
                 getBookedSeatForMe();
                 $('#dashboard').show('slow');
                 $('#booked-seat').hide('slow');
+                $(".se-pre-con").hide();
             },
             error: function (e) {
                 console.log(e);
+                $(".se-pre-con").hide();
             }
         });
     }
