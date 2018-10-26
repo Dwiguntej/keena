@@ -121,17 +121,20 @@ var getBookedSeatForMe = function () {
         url: urls.serverLocation + "reservedSeat?empId=" + userDetails.employeeId,
         method: "GET",
         success: function (data) {
-            var tableBody = "";
+
+            if(data && data !=null) {
+                var tableBody = "";
                 tableBody = tableBody + "<tr>";
-                tableBody = tableBody + "<td>" + data.seat.employee.firstname +" "+ data.seat.employee.lastname+ "</td>";
+                tableBody = tableBody + "<td>" + data.seat.employee.firstname + " " + data.seat.employee.lastname + "</td>";
                 tableBody = tableBody + "<td>" + data.seat.id + "</td>";
                 tableBody = tableBody + "<td><a class=\"ui-btn ui-corner-all\" onclick=reserveSeat(\"" + data.seat.id + "\",\"" + userDetails.employeeId + "\")>Unreserve</a></td>";
                 tableBody = tableBody + "</tr>";
-            $("#table-booked-seat").append(tableBody);
-            if(data !=null){
+                $("#table-booked-seat").append(tableBody);
+            }
+            if(data && data !=null){
                 $('#booked-seat').show('slow');
             } else{
-                $('#dashboard').show('slow');
+                $('#booked-seat').hide('slow');
             }
         },
         error: function (e) {
