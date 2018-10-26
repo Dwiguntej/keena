@@ -1,5 +1,5 @@
 var urls = {
-    availableSeatsLocation: "https://keena-space.herokuapp.com/"
+    availableSeatsLocation: "http://localhost:5000/seats"
 };
 
 var getAvailableSeats = function () {
@@ -9,13 +9,13 @@ var getAvailableSeats = function () {
         success: function (data) {
             var tableBody = "";
             data.forEach(function (element) {
-                tableBody = "<tr>";
-                tableBody = "<td>" + element.seatId + "</td>";
-                tableBody = "<td>" + element.managerName + "</td>";
-                tableBody = "<td><a class=\"ui-btn ui-corner-all\">Reserve</a></td>";
-                tableBody = "</tr>";
+                tableBody = tableBody + "<tr>";
+                tableBody = tableBody + "<td>" + element.seatId + "</td>";
+                tableBody = tableBody + "<td>" + element.managerName + "</td>";
+                tableBody = tableBody + "<td><a class=\"ui-btn ui-corner-all\">Reserve</a></td>";
+                tableBody = tableBody + "</tr>";
             });
-            $("#table-custom-2").html(tableBody);
+            $("#table-custom-2").append(tableBody);
             console.log(data);
         },
         error: function (e) {
