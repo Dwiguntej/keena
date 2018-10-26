@@ -1,5 +1,7 @@
 package com.salesforce.keenaspace.services.impl;
 
+import com.salesforce.keenaspace.DAO.SeatReservationDAO;
+import com.salesforce.keenaspace.VOs.SeatVO;
 import com.salesforce.keenaspace.entity.SeatReservation;
 import com.salesforce.keenaspace.repository.EmployeeRepository;
 import com.salesforce.keenaspace.repository.SeatReservationRepository;
@@ -21,10 +23,13 @@ public class SeatReservationServiceImpl implements SeatReservationService {
     @Autowired
     private SeatReservationRepository seatReservationRepository;
 
+    @Autowired
+    private SeatReservationDAO seatReservationDAO;
+
 
     @Override
-    public List<SeatReservation> findAllAvailableSeats(String location, String floor) {
-        return seatReservationRepository.findAllByDateAvailableEqualsAndSeat_LocationEqualsAndSeat_FloorAndReservedForIsNull(KeenaUtility.getDateWithoutTime(new Date()), location, floor);
+    public List<SeatVO> findAllAvailableSeats(String location, String floor) {
+        return seatReservationDAO.findAvailableSeats();
     }
 
     @Override

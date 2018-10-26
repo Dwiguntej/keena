@@ -2,27 +2,27 @@ package com.salesforce.keenaspace.VOs;
 
 public class SeatVO {
 
-    private String seatid;
-    private String managername;
+    private String seatId;
+    private String managerName;
 
-    public SeatVO(String seatid, String managername) {
-        this.seatid = seatid;
-        this.managername = managername;
+    public SeatVO(String seatId, String managerName) {
+        this.seatId = seatId;
+        this.managerName = managerName;
     }
 
-    public String getSeatid() {
-        return seatid;
+    public String getSeatId() {
+        return seatId;
     }
 
-    public void setSeatid(String seatid) {
-        this.seatid = seatid;
+    public void setSeatId(String seatId) {
+        this.seatId = seatId;
     }
 
-    public String getManagername() {
-        return managername;
+    public String getManagerName() {
+        return managerName;
     }
 
-    public void setManagername(String managername) {
-        this.managername = managername;
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
     }
 }
