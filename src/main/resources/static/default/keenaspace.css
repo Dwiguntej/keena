@@ -275,3 +275,11 @@ html body .ui-datepicker .ui-state-active {
     color: #fff;
     margin-left: 35px;
 }
+
+.ui-datepicker {
+    z-index: 100!important;
+}
+
+.datepickerLabel {
+    width: 23%;
+}

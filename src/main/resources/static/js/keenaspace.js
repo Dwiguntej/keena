@@ -1,6 +1,6 @@
 var urls = {
-    availableSeatsLocation: "http://localhost:5000/",
-    serverLocation: "http://localhost:5000/"
+    availableSeatsLocation: "https://keena-space.herokuapp.com/",
+    serverLocation: "https://keena-space.herokuapp.com/"
 };
 
 var userDetails = {};
