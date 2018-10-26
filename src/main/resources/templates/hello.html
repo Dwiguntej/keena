@@ -93,7 +93,7 @@
                 <input type="text" class="date-input-inline inlineblock" data-inline="true" data-role="date">
             </div>
 
-            <a href="#" class="ui-btn ui-btn-a">Mark Seat as Available</a>
+            <a href="#" class="ui-btn ui-btn-a" onclick="makeSeatAvailable()">Mark Seat as Available</a>
         </div>
     </div>
 </body>
@@ -110,7 +110,9 @@
         });
     });
     $(function () {
-        $(".date-input-inline").datepicker();
+        $(".date-input-inline").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
     });
 </script>
 </html>
