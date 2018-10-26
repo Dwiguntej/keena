@@ -107,6 +107,7 @@ var getTeamMembers = function () {
         url: urls.serverLocation + "getTeamMembers?managerId=" + userDetails.managerId,
         method: "GET",
         success: function (data) {
+            $("#team-member").empty();
             var divBody = "";
             data.forEach(function (element) {
                 divBody = divBody + "<div class=\"ui-radio ui-mini\">"

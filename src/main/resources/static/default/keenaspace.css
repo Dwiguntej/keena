@@ -257,7 +257,7 @@ html body .ui-datepicker .ui-state-active {
     height: 37px;
     padding-top: 13px;
     padding-left: 19px;
-    background-image: url(images/banner.png);
+    background-color: #0088bb;
     background-repeat: no-repeat;
 }
 
