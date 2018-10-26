@@ -83,6 +83,13 @@ var reserveSeat = function (seatId, empId, index) {
 
 }
 
+var refreshDashboard = function () {
+    $("#table-booked-seat-body").empty();
+    $("#table-custom-2-body").empty();
+    getAvailableSeats();
+    getBookedSeatForMe();
+}
+
 var getEmployeeDetails = function () {
     $.ajax({
         url: urls.serverLocation + "getEmployeeDetails",
