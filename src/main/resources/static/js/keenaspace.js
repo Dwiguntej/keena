@@ -23,7 +23,7 @@ var getAvailableSeats = function () {
                     tableBody = tableBody + "<tr>";
                     tableBody = tableBody + "<td>" + element.managerName + "</td>";
                     tableBody = tableBody + "<td>" + element.seatId + "</td>";
-                    tableBody = tableBody + "<td><a id=\"" + index + "\" class=\"ui-btn ui-corner-all\" onclick=reserveSeat(\"" + element.seatId + "\",\"" + userDetails.employeeId + "\",\"" + index + "\")>Reserve</a></td>";
+                    tableBody = tableBody + "<td><a id=\"" + index + "\" class=\"ui-btn ui-corner-all\" style=\"background-color: rgb(236, 151, 31);\" onclick=reserveSeat(\"" + element.seatId + "\",\"" + userDetails.employeeId + "\",\"" + index + "\")>Reserve</a></td>";
                     tableBody = tableBody + "</tr>";
                     index = index + 1;
                 });
@@ -127,7 +127,7 @@ var getBookedSeatForMe = function () {
                 tableBody = tableBody + "<tr>";
                 tableBody = tableBody + "<td>" + data.seat.employee.firstname + " " + data.seat.employee.lastname + "</td>";
                 tableBody = tableBody + "<td>" + data.seat.id + "</td>";
-                tableBody = tableBody + "<td><a class=\"ui-btn ui-corner-all\" onclick=reserveSeat(\"" + data.seat.id + "\",\"" + userDetails.employeeId + "\")>Unreserve</a></td>";
+                tableBody = tableBody + "<td><a class=\"ui-btn ui-corner-all\" style=\"background-color: lightsteelblue;\" onclick=reserveSeat(\"" + data.seat.id + "\",\"" + userDetails.employeeId + "\")>Release</a></td>";
                 tableBody = tableBody + "</tr>";
                 $("#table-booked-seat").append(tableBody);
             }
