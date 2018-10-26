@@ -109,8 +109,8 @@ var getTeamMembers = function () {
             var divBody = "";
             data.forEach(function (element) {
                 divBody = divBody + "<div class=\"ui-radio ui-mini\">"
-                divBody = divBody + "<input type= \"radio\" name=\"radio-choice-v-" + element.id + "\" id=\"team-member-" + element.id + "\" value=\"" + element.id + "\">";
-                divBody = divBody + "<label for=\"team-member-" + element.id + "\" class=\"ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off ui-last-child\">" + element.firstname + " " + element.lastname + "</label>";
+                divBody = divBody + "<input type= \"radio\" name=\"radio-choice\" id=\"team-member-" + element.id + "\" value=\"" + element.id + "\">";
+                divBody = divBody + "<label for=\"team-member-" + element.id + "\" class=\"ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-last-child\">" + element.firstname + " " + element.lastname + "</label>";
                 divBody = divBody + "</input>";
                 divBody = divBody + "</div>";
             });
