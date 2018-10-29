@@ -17,8 +17,7 @@ public class RestCaller {
 
   public static String getUserEmail() throws Exception {
 
-    String targetURL =
-        "https://test.salesforce.com/services/oauth2/token?grant_type=password&client_id=3MVG9d3kx8wbPieF4xQoFOpXR2aRGDhd4WfEPWC3slu5il.H1ZJc5LuxDD_vpajQ2IiYdR.X3d3XdZrhcXaP5&client_secret=4868920179566624296&username=rnemani@salesforce.com.fy19hack1&password=$HackathonWork123";
+    String targetURL = "";
     String responseBody = RestCaller.execute(targetURL);
     ObjectMapper objectMapper = new ObjectMapper();
     JsonNode jsonNode = objectMapper.readTree(responseBody);
